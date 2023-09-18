@@ -53,4 +53,18 @@
   -  
 
  4) Event - Driven
+
+4. 실행환경 만들기
+ 1) Node.js 설치
+ 2) 터미널용 툴 설치
+  - 윈도우용 : https://cmder.app/
+ 3) 개발용 툴 설치 : VSCode..
+ 4) GIT 설치 및 Github 연동
+
+5. REPL - 터미널 환경에서 실행
+ R : READ, E : Eval, P : Prict, L : Loop
+
+6. console 로그에 대한 API 검색 및 활용 - 2.console.js
+
+7. this 정리(global, object) - 3.this.js
     
