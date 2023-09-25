@@ -1,0 +1,193 @@
+1. Node.js란?
+
+ 1) ~ 1995년 이전 : HTML + CSS --> 웹사이트 개발
+    1995년 ~ 이후 : HTML + CSS + JavaScript --> 웹사이트 개발
+
+ 2) JavaScript
+    - Netscape사에서 개발한 Live script > Mocha > JavaScript 12월 발표
+
+ 3) 브라우저에서 지원하는 자바스크립트 엔진
+    - 사파리(Safari) : JavaScript Core
+    - InternetExplorer(MS) : Chakara
+    - Firefox : Spider Monkey
+    - Chrome : V8 엔진(JIT : Just-in-Time comilation)
+    - Edge(MS) : Chakara --> 2021년도에 V8 엔진 탑재함
+
+ 4) 2009년 Ryan Dhal이 Node.js를 발표
+    Deno : TypeScript 런타임 최초 개발자
+    -- JavaScript everywhere --
+
+ 5) Node.js는 
+    - 크롬의 V8엔진을 탑재하고 있는 자바스크립트 런타임 환경
+    - JavaScript Code outside a web browser.
+  
+ 6) Browser vs Node.js
+    - Browser => 동적인 웹애플리케이션 구현 가능
+                 -----------------------------------
+                     Web API - Windows, Document ,Ajax ,Json...
+
+    - Node.js => 서버와 서버간의 렌더링, 백엔드 서버 구현, 
+                 프론트 엔드 개발 등 ...
+                 ------------------------------------
+                 Node API
+
+2. Node.js 를 어떻게 공부할 것인가~~?
+
+ 1) Node의 구조를 정확히 이해하고 실팽방식을 기억한다.
+ 2) Node에서 제동하는 API를 잘 사용할 줄 알아야 한다.
+    API는 자바스크립트 문법으로 작성되었으므로, 문법을
+    정확히 익히도록 한다.
+ 3) 개발을 편리하게 지원해주는 프에임워크에 대해서 익힌다.
+    Node.js --> Express, Rust
+    Web API(브라우저) --> React, Vue
+
+3, Node.js 특징 4가지
+
+ 1) JavaScript Runtime
+  - V8 엔진 탑재 -> EcmaScript6, Open Source, Node API...
+
+ 2) Single Thread
+  - Process(Multi Thread) vs Thread
+
+ 3) Non-Blocking(비동기적) IO(Input Output)
+  -  
+
+ 4) Event - Driven
+
+4. 실행환경 만들기
+ 1) Node.js 설치
+ 2) 터미널용 툴 설치
+  - 윈도우용 : https://cmder.app/
+ 3) 개발용 툴 설치 : VSCode..
+ 4) GIT 설치 및 Github 연동
+
+5. REPL - 터미널 환경에서 실행
+ R : READ, E : Eval, P : Prict, L : Loop
+
+6. console 로그에 대한 API 검색 및 활용 - 2.console.js
+
+7. this 정리(global, object) - 3.this.js
+
+8. export/require - node, Blocking 
+   export/import - JavaScript, Non-blocking
+   (node는 동기방식이고 es6는 비동기방식이라 type을 바꾼후 실행 가능)
+
+9. Node API 
+
+   1) os - 운영체제 정보
+   2) Process
+   3) Path
+   4) FileSystem
+   5) Stream & Buffer
+
+10. NPM(Node Package Manager)
+
+ - npmjs.com
+ - 노드에서 외부 라이브러리 사용과 프로젝트 관리를 위함
+ - 오픈 소스로 제공되며, 천백만명 개발자들이 사용하는 커뮤니티
+ - 백만개 이상의 라이브러리 존재
+ - NPX는 다운로드 하여 저장하지 않고, 바로 실행
+ - yarn은 페이스북에서 라이브러리 커뮤니티로 npm에서 제기되는 
+   문제점을 해결하고자 만듬, React에서 주로 사용되며, npm과 호환이 됨
+
+11. HTTP/HTTPS
+
+ 1) HTTP/HTTPS
+  - Hypertext Tramsfer Protocol
+    (request - response protocol)
+
+    <HTTP>
+      request(URL: http://www.naver.com/)
+    client -----------------------> server
+           <-----------------------
+               response(HTML)                 
+                     |
+         데이터를 가로채는 경우 발생  
+
+
+   <HTTPS> : Hypertext Tramsfer Protocol Secure
+      request(URL: https://www.naver.com/)
+    client -----------------------> server
+           <-----------------------
+               response(HTML) : SSL , TSL등 공개키를 사용한 암호화 전송                 
+                     |
+         데이터를 가로채는 경우 감소  
+
+ 2) Status Codes
+    MDN - https://developer.mozilla.org/en-US/docs/web/HTTP/Status   
+  - 서버가 클라이언트에서 요청한 처리 상태를 숫자(3자리 ,5개범위)로 전송하는 코드
+
+    1xx : Informational
+    100(Continue) - 요청이 정상적이며, 계속 진행 가능
+    102(Processing) - 요청한 것을 아직 처리 중
+
+    2xx : Successful
+    200(OK) - 성공 메세지
+    201(Created) - 클라이언트가 요청한 리소스 생성이 성공
+    204(No Content) - 클라이언트 요청 처리 완료 전송할 컨텐츠는 없음
+
+    3xx :  Redirection
+    301(Moved Permanently) - 요청한 페이지가 영구적으로 다른곳으로 이동
+    302(Found) - 요청한 페이지가 임시적으로 다른 곳 으로 이동
+    303(See Other) - 302와 동일한 의미, 단 GET 방식만 사용 가능
+
+    4xx : client error
+    400(Bad Request) -  요청한 쿼리가 잘못된 경우
+    401(Unauthorized) - 로그인 등 권한이 없는 클라이언트가 요청한 경우
+    403(Forbidden) - 로그인한 사용자이지만 특정한 일을 수행 할 권한이 없음
+    404(Npt Found) - URL이 존재하지 않을떄
+    405(Method Not Allowed) - 요청한 기능이 허용되지 않을 떄
+          
+    5xx : Server error
+    500(Internal Server Error) - 서버에서 요청을 처리할 수 없는 경우 
+    502(Bad Gateway) - 중간에 서버 요청을 어떻게 처리해야 할지 모르는 경우
+    503(Service Unavailable) - URL에서 요청한 특정한 처리를 하기 위한 준비가 아직 안되었을떄
+
+ 3) Request
+  MDN - https://developer.mozilla.org/en-US/docs/web/HTTP/Methods
+
+  - URL : Uniform Resource Location
+     https://www.server.com:80/courser/frontend/js/search?a=123
+     ------    -------------    ------------------------ ------
+    protocol     hostname               pathname         query(-string) : get방식에서만 사용 
+
+  - Method : 요청하는 방식 (GET/POST/PUT)
+  - GET - get : 서버에서 해당 리소스를 가져오고 싶을 떄
+  - POST - Created : URL이 가리키는 곳에 무석인가를 생성하고 싶을 떄, 전송하는 데이터의 용량이 큰 경우
+  - PUT - replace : URL에 있는 데이터를 없데이트 하고 싶을 떄
+  - DELETE - delete : URL에 있는 데이터를 삭제하고 싶을 떄
+  - PATCH - replace partially : 부분적으로 업데이트 하고 싶을 떄
+  - HEAD - get without body : 데이터를 받지는 않고 HEAD만 받고 싶을 떄
+  - OPTIONS - all surpported methods for URL : 해당 URL에서 사용 가능한 모든메소드 옵션을 알고 싶을 떄
+  - TRACE - echoed the recieved request : 요청에 대한 서버의 반응 상태를 확인 할 떄
+
+    [GET] - 200, 401, 403, 404, 405 ..
+    [POST] - 201, 401, 403, 404, 409 ..
+    [PUT/DELETE/PATCH] - 200, 204, 405, 404, 405 ..
+    [HEAR/OPTIONS/TRACE] - 200, 401, 403, 404, 405 ..
+
+    * GET/HEAD/OPTIONS/TRACE 메소드는 서버의 데이터를 읽기만 진행하고, 
+      POST/PUT/DELETE/PATCH 데이터의 변경을 요청하는 메소드가 아님
+
+ 4) HTTP Headers
+  - Stateless Protocol : HTTP는 상태정보를 저장하지 않는 프로토콜이므로 서버에 대한 인증을 필요시 얻어야함
+  - Cookies & Session 
+
+                   Request(get) : httpL//www.naver.com/login 
+   client -----------------------------------------------------------> Server 
+          <-----------------------------------------------------------  
+                           Response : 로그인화면(HTML)
+
+                      request(post) : 로그인 요청(id, pass)
+    -----------------------------------------------------------> Server + DB
+    <----------------------------------------------------------- 로그인 성공 : Session(Key0) 
+   URL + Session(Key0) -------------------------------------->
+Cookies(Session(Key0))
+  ------> 브라우저
+
+
+12. Node로 서버 생성하기
+ 1) 템플릿 엔진을 구현한 서버 생성
+ 2) http 모듈을 이용하여 서버 생성. http2/https
+
+    
