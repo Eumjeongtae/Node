@@ -1,0 +1,19 @@
+ex : https://www.aladin.co.kr/ttb/api/ItemList.aspx?ttbkey=ttbdmawjdxo121911001&QueryType=ItemNewAll&MaxResults=10&start=1&SearchTarget=Book&output=js&Version=20131101
+
+QueryType  : QueryType = ${}
+ 1) ItemNewAll : 신간 전체 리스트
+ 2) ItemNewSpecial : 주목할 만한 신간 리스트
+ 3) ItemEditorChoice : 편집자 추천 리스트
+ 4) Bestseller : 베스트셀러
+ 5) BlogBest : 블로거 베스트셀러 (국내도서만 조회 가능)
+
+ MaxResults : MaxResults=${이상 100이하}
+
+ SearchTarget : SearchTarget = ${}
+  1) Book(기본값) : 도서
+  2) Foreign : 외국도서
+  3) Music : 음반
+  4) DVD : DVD
+  5) Used : 중고샵(도서/음반/DVD 등)
+  6) eBook: 전자책
+  7) All : 위의 모든 타겟(몰)
