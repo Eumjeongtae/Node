@@ -20,7 +20,7 @@
       .then(rlist => {
         makeRply(rlist)
 
-      })
+      }) // 사이트 로드될떄 fetch 로 데이터 요청
       .catch()
   }
 
@@ -32,7 +32,7 @@
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ nid: e.target.value, replyContent: replyContent })
 
-      })
+      }) //버튼 눌렀을떄 fetch로 데이터 요청
       .then(response => response.json())
       .then(data => {
         let output = data
