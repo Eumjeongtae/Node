@@ -1,0 +1,7 @@
+1. cmd : npm init --yes
+           npm i express
+           npm i nodemon --save-dev
+2. package.json :   "type": "module",
+   		scripts:  "start": "nodemon app" 추가
+3. cmd : npm i express
+           npm i ejs
