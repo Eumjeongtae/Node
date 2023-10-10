@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>score</title>
+</head>
+
+<body>
+  <h1>score</h1>
+  <ul>
+
+    <% scoreList.forEach(score=>{ %>
+      <li>
+        <%= score.name%>
+          <%= score.grade%>
+      </li>
+      <% })%>
+
+  </ul>
+  <table border="1">
+    <thead>
+      <tr>
+        <td>번호</td>
+        <td>과목명</td>
+        <td>등급</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% scoreList.forEach((score,i)=>{ %>
+        <tr>
+          <td><%= ++0i %></td>
+          <td><%= score.name %></td>
+          <td><%= score.grade %></td>
+        </tr>
+        <% })%>
+    </tbody>
+  </table>
+
+
+</body>
+
+</html>

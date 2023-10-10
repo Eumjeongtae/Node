@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>뉴스상세</title>
+</head>
+
+<body>
+  <h2>
+    <%= newsContent[0].title %>
+  </h2>
+  <hr>
+  <div>
+    <img src="<%= newsContent[0].url %> " alt="">
+  </div>
+  <p>
+    <%= newsContent[0].content %>
+  </p>
+  <a href="/news">목록으로</a>
+
+  <hr>
+
+</body>
+<%- include("reply") %>
+
+
+</html>

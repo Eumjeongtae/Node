@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News</title>
+</head>
+
+<body>
+
+  <h1>헤드라인 뉴스</h1>
+  <hr>
+  <form action="/news/register" method="post" name="regForm" style="display: none;" id="regForm" >
+    URL : <input type="text" style="width: 70%;" name="url" placeholder="img url"><br>
+    Title : <input type="text" style="width: 70%;" name="title"  placeholder="title"><br>
+    Content : <textarea type="text" style="width: 70%; height: 100px;" name="content" placeholder="content"></textarea><br>
+    <button type="submit">등록완료</button>
+    <button type="reset">다시쓰기</button>
+  </form>
+  <div style="float: right;">
+    <button type="button" id="btnReg">뉴스등록</button>
+  </div>
+
+  <ul style="padding: 20px;">
+    <% newsList.forEach(news=>{ %>
+      <li style="list-style: none; border-bottom: 1px solid #313131;  padding: 50px;">
+        <img src="<%= news.url %>" alt=""
+          style="width: 150px; float: left; padding-right: 10px;">
+        <p><a href="/news/<%= news.nid %>"><%= news.title %></a></p>
+        <p><%= news.content.slice(0,20) %>...</p>
+  
+      </li>
+    <% }) %>
+  
+
+  </ul>
+
+  <script>
+    let show = false
+    document.querySelector('#btnReg').addEventListener('click', e => {
+      let regForm = document.querySelector('#regForm')
+      show = !show
+      show == false ? regForm.style.display = 'none' : regForm.style.display = 'block'
+    })
+  </script>
+
+</body>
+
+</html>

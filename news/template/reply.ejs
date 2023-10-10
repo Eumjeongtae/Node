@@ -1,0 +1,48 @@
+<div>댓글 등록</div>
+<div id="replyForm"> <br>
+  <label for=""></label>
+  <textarea name="replyContent" id="replyContent" style="width: 80%;"></textarea> </BR>
+  <button type="button" id="btnRegReply" value="<%= newsContent[0].nid %>">등록완료</button>
+</div>
+<ul id="replyList"></ul>
+
+
+<script>
+  const btnRegReply = document.querySelector('#btnRegReply')
+  let makeRply = (data) => {
+    data.forEach(v => {
+      document.querySelector('#replyList').insertAdjacentHTML('beforeend', `<li>${v.replyContent}</li>`)
+    });
+  }
+  let makeRplylist = (nid) => {
+    fetch('/reply/' + nid)
+      .then(response => response.json())
+      .then(rlist => {
+        makeRply(rlist)
+
+      })
+      .catch()
+  }
+
+  btnRegReply.addEventListener('click', e => {
+    let replyContent = document.querySelector('#replyContent').value
+    fetch('/reply',
+      {
+        method: 'post',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ nid: e.target.value, replyContent: replyContent })
+
+      })
+      .then(response => response.json())
+      .then(data => {
+        let output = data
+        document.querySelector('#replyList').innerHTML = ''
+        makeRply(output)
+
+      })
+      .catch(console.error)
+
+
+  })
+  makeRplylist(document.querySelector('#btnRegReply').value)
+</script>
