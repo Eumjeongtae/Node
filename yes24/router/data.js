@@ -25,6 +25,7 @@ let bestsellerList = {
     },
   ]
 }
+
 let realTimeBestsellerList = {
   title: '실시간 베스트',
   list: [
