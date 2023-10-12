@@ -1,11 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+
   <title>국내도서</title>
+  <style>
+    ul{display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 60px;}
+    li{width: 19%; list-style: none;}
+    ul p:nth-child(2){font-size: 16px; font-weight: bold;}
+    ul p:nth-child(3){font-size: 14px;}
+    ul p:nth-child(4){font-size: 11px;}
+  </style>
 </head>
+
 <body>
   <h1>국내도서 리스트</h1>
+
+  <h2>신간 전체 리스트</h2>
+  <ul class="itemNew">
+    <% newbookData.forEach(book=>{ %>
+      <li>
+        <p><img src="<%= book.cover %>" alt=""></p>
+        <p><%= book.title %></p>
+        <p><%= book.author %></p>
+        <p><%= book.description.slice(0,20) %></p>
+      </li>
+    <% }) %>
+  
+  </ul>
+
+  <h2>주목할 만한 신간 리스트</h2>
+  <ul class="itemNew">
+    
+    <% newbookData.forEach(book=>{ %>
+      <li>
+        <p><img src="<%= book.cover %>" alt=""></p>
+        <p><%= book.title %></p>
+        <p><%= book.author %></p>
+        <p><%= book.description.slice(0,20) %></p>
+      </li>
+    <% }) %>
+    </ul>
+
+    <h2>베스트셀러</h2>
+    <ul class="itemNew">
+      <% bookBestseller.forEach(book=>{ %>
+        <li>
+          <p><img src="<%= book.cover %>" alt=""></p>
+          <p><%= book.title %></p>
+          <p><%= book.author %></p>
+          <p><%= book.description.slice(0,20) %></p>
+        </li>
+      <% }) %>
+      </ul>
+    <h2>블로거 베스트셀러 </h2>
+    <ul class="itemNew">
+      <% bookBlogBest.forEach(book=>{ %>
+        <li>
+          <p><img src="<%= book.cover %>" alt=""></p>
+          <p><%= book.title %></p>
+          <p><%= book.author %></p>
+          <p><%= book.description.slice(0,20) %></p>
+        </li>
+      <% }) %>
+      </ul>
+
+
+
 </body>
+
 </html>
