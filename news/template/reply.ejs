@@ -2,7 +2,7 @@
 <div id="replyForm"> <br>
   <label for=""></label>
   <textarea name="replyContent" id="replyContent" style="width: 80%;"></textarea> </BR>
-  <button type="button" id="btnRegReply" value="<%= newsContent[0].nid %>">등록완료</button>
+  <button type="button" id="btnRegReply" value="<%= newsContent.nid %>">등록완료</button>
 </div>
 <ul id="replyList"></ul>
 
@@ -11,7 +11,7 @@
   const btnRegReply = document.querySelector('#btnRegReply')
   let makeRply = (data) => {
     data.forEach(v => {
-      document.querySelector('#replyList').insertAdjacentHTML('beforeend', `<li>${v.replyContent}</li>`)
+      document.querySelector('#replyList').insertAdjacentHTML('beforeend', `<li>${v.content}</li>`)
     });
   }
   let makeRplylist = (nid) => {
@@ -30,7 +30,7 @@
       {
         method: 'post',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ nid: e.target.value, replyContent: replyContent })
+        body: JSON.stringify({ nid: e.target.value, content: replyContent })
 
       }) //버튼 눌렀을떄 fetch로 데이터 요청
       .then(response => response.json())

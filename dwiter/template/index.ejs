@@ -21,33 +21,34 @@
     <input type="text" name="content" placeholder="content" style="width: 70%;">
     <button type="submit">Post</button>
   </form>
-  <% renderList.forEach(dwitter=>{ %>
+  <% for(i=0; i < list.length; i++){ %>
     <div style="border: 1px solid gray; margin-top: 10px;">
-        <span style="float: right; cursor: pointer;" onclick="remove('<%= dwitter.pid %>')">삭제</span>
-        <span style="float: right; cursor: pointer;" onclick="updateToggle('<%= dwitter.pid %>')">편집&nbsp;&nbsp;</span>
-        <img style="width: 70px; height: 70px; object-fit: cover;"
-          src="https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_3x2.jpg" alt="">
-        <span>[<%= dwitter.name %>]</span>
-        <span><a href="/dwitter/<%= dwitter.id %>">@<%= dwitter.id %></a></span>
-        <span>
-          <%= dwitter.date %>
-        </span>
-        <div>
-          <%= dwitter.content %>
-        </div>
+      <span style="float: right; cursor: pointer;" onclick="remove('<%= list[i].id %>')">삭제</span>
+      <span style="float: right; cursor: pointer;" onclick="updateToggle('<%= list[i].id %>')">편집&nbsp;&nbsp;</span>
+      <img style="width: 70px; height: 70px; object-fit: cover;"
+        src="https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_3x2.jpg" alt="">
+      <span>[<%= list[i].name %>]</span>
+      <span><a href="/dwitter/<%= list[i].id %>">@<%= list[i].id %></a></span>
+      <span>
+        <%= list[i].date %>
+      </span>
+      <div>
+        <%= list[i].content %>
+      </div>
 
-        <div id="updateForm_<%= dwitter.pid %>" style="display: none;">
-          <input type="text" id="content_<%= dwitter.pid %>" style="width: 80%;  background-color: #eee;">
-          <button type="button" onclick="update('<%= dwitter.pid %>')">Updata</button>
-        </div>
+      <div id="updateForm_<%= list[i].id %>" style="display: none;">
+        <input type="text" id="content_<%= list[i].id %>" style="width: 80%;  background-color: #eee;">
+        <button type="button" onclick="update('<%= list[i].id %>')">Updata</button>
+      </div>
 
     </div>
-    <% }) %>
+    <% } %>
+
 
       <script>
-        let updateToggle = pid => {
-          const updateForm = document.querySelector("#updateForm_" + pid);
-          const contentText = document.querySelector("#content_" + pid);
+        let updateToggle = id => {
+          const updateForm = document.querySelector("#updateForm_" + id);
+          const contentText = document.querySelector("#content_" + id);
           const display = updateForm.style.display
           if (display === 'none') {
             updateForm.style.display = 'block'
@@ -58,14 +59,14 @@
           }
         }
 
-        let update = pid => {
-          const updateText = document.querySelector("#content_" + pid).value;
+        let update = id => {
+          const updateText = document.querySelector("#content_" + id).value;
 
           fetch('/dwitter',
             {
               method: 'put',
               headers: { 'content-type': 'application/json' },
-              body: JSON.stringify({ pid: pid, content: updateText })
+              body: JSON.stringify({ id: id, content: updateText })
             })
             .then((result) => {
               if (result.status === 204) {
@@ -75,12 +76,12 @@
             .catch(console.error)
         }
 
-        let remove = pid => {
+        let remove = id => {
           fetch('/dwitter',
             {
               method: 'delete',
               headers: { 'content-type': 'application/json' },
-              body: JSON.stringify({ pid: pid })
+              body: JSON.stringify({ id: id })
             })
             .then((result) => {
               if (result.status === 204) {

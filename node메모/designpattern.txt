@@ -1,0 +1,9 @@
+Design Pattern
+
+M(Model) - Data : ~Dao, ~Rapository..
+V(View) - UI(화면)
+C(Controller) - Business Losic
+--------------------------------------
+M(Model) - Data : ~Rapository.js
+V(View) - Router : ~Router.js
+C(Controller) - Business Losic : ~Controller.js

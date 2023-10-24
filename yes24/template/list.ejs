@@ -11,12 +11,12 @@
 
 
     <ul style="display: flex; list-style: none;">
-      <li style="display: block; padding: 10px; border: 1px solid #000;" onclick="bestSellerCategory('BestSeller',1)">종합</li>
-      <li style="display: block; padding: 10px; border: 1px solid #000;" onclick="bestSellerCategory('RealTimeBestSeller',1)">실시간</li>
-      <li style="display: block; padding: 10px; border: 1px solid #000;" onclick="bestSellerCategory('DayBestSeller',1)">일별</li>
-      <li style="display: block; padding: 10px; border: 1px solid #000;" onclick="bestSellerCategory('MonthWeekBestSeller',1)" >월별/주별</li>
-      <li style="display: block; padding: 10px; border: 1px solid #000;" onclick="bestSellerCategory('HotPriceBestSeller',1)">특가</li>
-      <li  style="display: block; padding: 10px; border: 1px solid #000;" onclick="bestSellerCategory('SteadySeller',1)" >스테디셀러</li>
+      <li style="display: block; padding: 10px; border: 1px solid #000;" onclick="bestSellerCategory('BestSeller','bs',1)">종합</li>
+      <li style="display: block; padding: 10px; border: 1px solid #000;" onclick="bestSellerCategory('RealTimeBestSeller','rtbs',1)">실시간</li>
+      <li style="display: block; padding: 10px; border: 1px solid #000;" onclick="bestSellerCategory('DayBestSeller','dbs',1)">일별</li>
+      <li style="display: block; padding: 10px; border: 1px solid #000;" onclick="bestSellerCategory('MonthWeekBestSeller','mbs',1)" >월별/주별</li>
+      <li style="display: block; padding: 10px; border: 1px solid #000;" onclick="bestSellerCategory('HotPriceBestSeller','hpbs',1)">특가</li>
+      <li  style="display: block; padding: 10px; border: 1px solid #000;" onclick="bestSellerCategory('SteadySeller','ss',1)" >스테디셀러</li>
     </ul>
 
     <h2></h2>
@@ -26,13 +26,12 @@
 
 
     <script>
-      const bestSellerCategory = (categoryName,page)=>{
-        let url = '/'+ categoryName +'/'+page
+      const bestSellerCategory = (categoryName,bs_id,page)=>{
+        let url = '/'+ categoryName +'/'+bs_id+'/'+page
         fetch(url)
           .then(response=>response.json())
           .then(bestSellerList=>{
-            console.log(bestSellerList)
-            document.querySelector('h2').innerHTML= bestSellerList.title
+            document.querySelector('h2').innerHTML= bestSellerList.list[0].bs_title
             document.querySelector('#list').innerHTML=''
             bestSellerList.list.forEach(book => {
               document.querySelector('#list').insertAdjacentHTML('beforeend',`
@@ -48,7 +47,7 @@
           })
       }
 
-      bestSellerCategory('BestSeller',1)
+      bestSellerCategory('BestSeller','bs',1)
 
     </script>
 </body>

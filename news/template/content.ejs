@@ -9,21 +9,39 @@
 
 <body>
   <h2>
-    <%= newsContent[0].title %>
+    <%= newsContent.title %>
   </h2>
   <hr>
   <div>
-    <img src="<%= newsContent[0].url %> " alt="">
+    <img src="<%= newsContent.url %> " alt="">
   </div>
   <p>
-    <%= newsContent[0].content %>
+    <%= newsContent.content %>
   </p>
   <a href="/news">목록으로</a>
+  <button type="button" onclick="remove('<%= newsContent.nid %>')">삭제하기</button>
 
   <hr>
 
 </body>
 <%- include("reply") %>
+
+  <script>
+    function remove(nid) {
+      fetch('/news/'+nid,
+        {
+          method: 'delete',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ nid:nid })
+        })
+        .then((result) => {
+          if (result.status === 204) {
+            window.location.href = 'http://localhost:8080/news/';
+          }
+        })
+        .catch(console.error)
+    }
+  </script>
 
 
 </html>
